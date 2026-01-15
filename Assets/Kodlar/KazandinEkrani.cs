@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // TextMeshPro kullandığın için buraya da ekledik
+using TMPro; 
 
 public class KazandinEkrani : MonoBehaviour
 {
@@ -15,7 +15,6 @@ public class KazandinEkrani : MonoBehaviour
                               "SİBER DÜNYAYI KURTARDIN!";
         }
         
-        // Kazandın ekranına gelince puanı sıfırlamak istersen:
-        // PuanSistemi.toplamPuan = 0;
+    
     }
 }
