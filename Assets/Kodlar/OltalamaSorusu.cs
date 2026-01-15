@@ -6,8 +6,8 @@ public class OltalamaSorusu : MonoBehaviour
     [Header("UI Elemanları")]
     public GameObject diyalogPaneli; 
     public Text diyalogMetni;       
-    public Button tıklaButonu;      // Bu sefer DOĞRU cevap olacak (Güncelleme için)
-    public Button reddetButonu;     // Bu sefer YANLIŞ cevap olacak
+    public Button tıklaButonu;      
+    public Button reddetButonu;     
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;    
@@ -33,23 +33,22 @@ public class OltalamaSorusu : MonoBehaviour
             
             diyalogPaneli.SetActive(true);
             
-            // --- BUTON GÖREVLERİNİ YER DEĞİŞTİRDİK ---
-            // Tıkla (Evet) butonu artık DoğruCevap fonksiyonunu çalıştıracak
+           
             tıklaButonu.onClick.RemoveAllListeners();
             tıklaButonu.onClick.AddListener(DogruCevap);
 
-            // Reddet (Hayır) butonu artık YanlisCevap fonksiyonunu çalıştıracak
+         
             reddetButonu.onClick.RemoveAllListeners();
             reddetButonu.onClick.AddListener(YanlisCevap);
 
-            // Yeni Olumlu Senaryo Metni
+        
             diyalogMetni.text = "Sistem Güvenlik Güncellemesi Mevcut! Güvende kalmak için hemen yüklemek ister misin?";
         }
     }
 
     void YanlisCevap()
     {
-        // Güncellemeyi reddetmek hata olduğu için can azaltıyoruz
+   
         if (sesKaynagi != null && yanlisSesi != null) {
             sesKaynagi.PlayOneShot(yanlisSesi); // Hata sesi
         }
@@ -65,7 +64,6 @@ public class OltalamaSorusu : MonoBehaviour
     {
         etkilesimTamamlandi = true;
 
-        // Güncellemeyi kabul etmek doğru davranış
         if (sesKaynagi != null && dogruSesi != null) {
             sesKaynagi.PlayOneShot(dogruSesi); // Başarı sesi
         }
