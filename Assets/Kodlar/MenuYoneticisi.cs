@@ -37,12 +37,11 @@ public class MenuYoneticisi : MonoBehaviour
         if (hakkindaPaneli != null) hakkindaPaneli.SetActive(false);
     }
 
-    // --- İŞTE EKSİK OLAN VE BUTONDA SEÇMEN GEREKEN KISIM ---
     public void AnaMenuyeGit()
     {
         if(butonTiklamaSesi != null && menuSesKaynagi != null) menuSesKaynagi.PlayOneShot(butonTiklamaSesi);
         
-        // "baslangic" yazan yere Ana Menü sahnenin Unity'deki adını tam yaz!
+    
         SceneManager.LoadScene("baslangic"); 
     }
 }
