@@ -10,7 +10,7 @@ public class SesSusturucu : MonoBehaviour
         foreach (AudioSource ses in tumSesler)
         {
             // Eğer bu ses objesi bu sahnede yeni oluşturulmadıysa (önceki sahneden kaldıysa) sustur
-            // Ya da direkt hepsini susturup bu sahneninkini sonra başlatabilirsin
+  
             ses.Stop();
         }
     }
