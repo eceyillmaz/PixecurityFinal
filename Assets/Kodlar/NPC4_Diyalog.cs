@@ -6,16 +6,16 @@ public class NPC4_Diyalog : MonoBehaviour
     [Header("UI Elemanları")]
     public GameObject diyalogPaneli; 
     public Text diyalogMetni;       
-    public Button baglanButonu;    // Yanlış Seçenek (Hemen Bağlan)
-    public Button reddetButonu;    // Doğru Seçenek (Kendi İnternetimi Kullan)
+    public Button baglanButonu;    
+    public Button reddetButonu;   
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi;    // Hoparlör bileşeni
-    public AudioClip dogruSesi;      // Doğru cevap tık sesi
-    public AudioClip yanlisSesi;     // Yanlış cevap/can gitme sesi
+    public AudioSource sesKaynagi;   
+    public AudioClip dogruSesi;    
+    public AudioClip yanlisSesi;    
 
     private bool etkilesimTamamlandi = false;
 
@@ -43,7 +43,7 @@ public class NPC4_Diyalog : MonoBehaviour
 
     void YanlisCevap()
     {
-        // --- SES EKLEME ---
+        //ses
         if (sesKaynagi != null && yanlisSesi != null) {
             sesKaynagi.PlayOneShot(yanlisSesi);
         }
@@ -57,7 +57,7 @@ public class NPC4_Diyalog : MonoBehaviour
     {
         etkilesimTamamlandi = true;
 
-        // --- SES EKLEME ---
+        
         if (sesKaynagi != null && dogruSesi != null) {
             sesKaynagi.PlayOneShot(dogruSesi);
         }
