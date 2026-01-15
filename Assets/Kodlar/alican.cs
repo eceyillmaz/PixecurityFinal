@@ -35,19 +35,16 @@ public class ALİCAN : MonoBehaviour
         CanSimgeleriniDenetle(); 
     }
 
-    // --- BU FONKSİYONU DİKKATLİCE GÜNCELLE ---
+  
     public void CanAzalt() 
     { 
         canHafizasi -= 1; 
         Debug.Log("CAN GİTTİ! Kalan: " + canHafizasi);
-        
-        // Can düştüğü an kalpleri karartmak için bu fonksiyonu burada ÇAĞIRMALISIN
         CanSimgeleriniDenetle(); 
     }
 
     public void CanSimgeleriniDenetle()
     {
-        // Kalpler dizisi boşsa hata verme, çık
         if (kalpler == null || kalpler.Length == 0) return;
 
         // Önce hepsini beyaz (dolu) yap
