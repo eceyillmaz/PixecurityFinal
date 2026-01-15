@@ -10,7 +10,7 @@ public class FriendDiyalog : MonoBehaviour
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;
-    public GameObject virusObjesi; // Sahneye yeni koyduğun virüsü buraya sürükleyeceksin
+    public GameObject virusObjesi; 
 
     private bool etkilesimTamamlandi = false;
 
@@ -29,7 +29,7 @@ public class FriendDiyalog : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Alican (Player) yanına gelirse
+        // Alican yanına gelirse
         if (other.CompareTag("Player") && !etkilesimTamamlandi)
         {
             if (alicanScripti != null) alicanScripti.hareketEdebilir = false; 
@@ -50,13 +50,13 @@ public class FriendDiyalog : MonoBehaviour
         
         if (alicanScripti != null) alicanScripti.hareketEdebilir = true;
 
-        // --- VİRÜSÜ UYANDIRMA VE KAYBOLMA ---
+        // virüsü kaybetme
         if (virusObjesi != null)
         {
             virusObjesi.SetActive(true); // Kapalı olan virüsü açar
             Debug.Log("Virüs aktif edildi! Kaçmaya başla!");
         }
 
-        Destroy(gameObject); // Friend (Arkadaş) sahneden silinir
+        Destroy(gameObject); // Friend sahneden silinir
     }
 }
