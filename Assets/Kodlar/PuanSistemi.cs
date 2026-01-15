@@ -10,17 +10,17 @@ public class PuanSistemi : MonoBehaviour
     
     [Header("Ses Ayarları")]
     public AudioClip toplamaSesi; // Çalınacak ses dosyası
-    private AudioSource sesKaynagi; // Sesin kesilmemesi için sabit hoparlör
+    private AudioSource sesKaynagi;
 
     void Awake()
     {
-        // Singleton Yapısı: Bu obje sahneler arası silinmez
+        // Singleton Yapısı:  obje sahneler arası silinmez
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // Objeyi sahneler arası koru
             
-            // Sesin kesilmemesi için objeye bir AudioSource ekliyoruz
+            // Sesin kesilmemesi için objeye bir AudioSource 
             sesKaynagi = gameObject.AddComponent<AudioSource>();
             sesKaynagi.playOnAwake = false;
         }
@@ -41,7 +41,7 @@ public class PuanSistemi : MonoBehaviour
 
     public void YaziyiBulVeGuncelle()
     {
-        // Yeni sahnedeki "PuanYazisi" isimli TextMeshPro'yu bulur
+        // Yeni sahnedeki "PuanYazisi" ismini bulur
         if (puanYazisi == null)
         {
             GameObject bulunanObj = GameObject.Find("PuanYazisi");
@@ -57,8 +57,7 @@ public class PuanSistemi : MonoBehaviour
     {
         toplamPuan += miktar;
         
-        // SES ÇALMA (Garanti Yöntem):
-        // PlayClipAtPoint yerine PlayOneShot kullanarak sesin kesilmesini önledik.
+
         if (toplamaSesi != null && sesKaynagi != null)
         {
             sesKaynagi.PlayOneShot(toplamaSesi);
