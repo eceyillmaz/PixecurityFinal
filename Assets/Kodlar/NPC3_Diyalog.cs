@@ -13,9 +13,9 @@ public class NPC3_Diyalog : MonoBehaviour
     public ALİCAN alicanScripti;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi;    // Hoparlör bileşeni
-    public AudioClip dogruSesi;      // Doğru cevap tık sesi
-    public AudioClip yanlisSesi;     // Yanlış cevap sesi (can giderken)
+    public AudioSource sesKaynagi;    
+    public AudioClip dogruSesi;     
+    public AudioClip yanlisSesi;     
 
     private bool etkilesimTamamlandi = false;
 
@@ -44,7 +44,7 @@ public class NPC3_Diyalog : MonoBehaviour
 
     void YanlisCevap()
     {
-        // --- SES EKLEME ---
+        //ses
         if (sesKaynagi != null && yanlisSesi != null) {
             sesKaynagi.PlayOneShot(yanlisSesi);
         }
@@ -58,14 +58,13 @@ public class NPC3_Diyalog : MonoBehaviour
     {
         etkilesimTamamlandi = true;
 
-        // --- SES EKLEME ---
+      
         if (sesKaynagi != null && dogruSesi != null) {
             sesKaynagi.PlayOneShot(dogruSesi);
         }
 
         diyalogMetni.text = "HARİKA! Gerçek oyun yöneticileri veya tanımadığın oyuncular senden asla şifreni istemez. Şifreni paylaşmamak, dijital kaleni korumanın ilk kuralıdır! +25 Puan.";
         
-        // PUAN EKLEME SATIRI (Bu zaten kendi sesini çalacaktır):
         if (PuanSistemi.instance != null) {
             PuanSistemi.instance.PuanArttir(25); 
         }
