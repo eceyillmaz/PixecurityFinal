@@ -8,8 +8,8 @@ public class npc1 : MonoBehaviour {
     public Button tamamButonu;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi; // Inspector'dan hoparlörü sürükle
-    public AudioClip butonSesi;    // Tamam butonuna basınca çalacak ses dosyası
+    public AudioSource sesKaynagi; 
+    public AudioClip butonSesi;  
 
     void Start() {
         diyalogPaneli.SetActive(false); 
@@ -18,7 +18,7 @@ public class npc1 : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            // Alican'ın durması için gereken satır
+            // Alican'ın durması için 
             other.GetComponent<ALİCAN>().konustugumIcinDur = true;
 
             diyalogPaneli.SetActive(true);
@@ -30,7 +30,7 @@ public class npc1 : MonoBehaviour {
     }
 
     void KapatPanel() {
-        // --- SES ÇALMA KODU ---
+        // ses
         if (sesKaynagi != null && butonSesi != null) {
             sesKaynagi.PlayOneShot(butonSesi); // Sesi bir kez çal
         }
