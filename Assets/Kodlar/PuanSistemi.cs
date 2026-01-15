@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // TextMeshPro kullanımı için
+using TMPro; 
 using UnityEngine.SceneManagement;
 
 public class PuanSistemi : MonoBehaviour
