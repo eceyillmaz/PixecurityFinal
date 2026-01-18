@@ -7,15 +7,15 @@ public class NPC4_Diyalog : MonoBehaviour
     public GameObject diyalogPaneli; 
     public Text diyalogMetni;       
     public Button baglanButonu;    
-    public Button reddetButonu;   
+    public Button reddetButonu;    
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi;   
-    public AudioClip dogruSesi;    
-    public AudioClip yanlisSesi;    
+    public AudioSource sesKaynagi;    // Hoparlör bileşeni
+    public AudioClip dogruSesi;      // Doğru cevap tık sesi
+    public AudioClip yanlisSesi;     // Yanlış cevap/can gitme sesi
 
     private bool etkilesimTamamlandi = false;
 
@@ -43,32 +43,32 @@ public class NPC4_Diyalog : MonoBehaviour
 
     void YanlisCevap()
     {
-        //ses
+        // ses
         if (sesKaynagi != null && yanlisSesi != null) {
             sesKaynagi.PlayOneShot(yanlisSesi);
         }
 
         alicanScripti.CanAzalt(); 
         diyalogMetni.text = "EYVAH! Şifresiz ve halka açık Wi-Fi ağları güvenli değildir. Kötü niyetli kişiler bu ağ üzerinden bilgilerini çalabilir! Bir canın gitti.";
-        Invoke("PaneliKapat", 3f);
+        Invoke("PaneliKapat", 7f);
     }
 
    void DogruCevap()
     {
         etkilesimTamamlandi = true;
 
-        
+        // ses
         if (sesKaynagi != null && dogruSesi != null) {
             sesKaynagi.PlayOneShot(dogruSesi);
         }
 
-        diyalogMetni.text = "HARİKA! Doğru bildin ve 25 puan kazandın!";
+        diyalogMetni.text = "HARİKA! \n\nŞifresiz ağlar üzerinden kişisel bilgilerimiz başkalarının eline geçebilir. Güvenliğin için şüpheli ağlara bağlanmamayı seçerek harika bir dijital vatandaş oldun! +25 Puan.";
         
         if (PuanSistemi.instance != null) {
             PuanSistemi.instance.PuanArttir(25); 
         }
         
-        Invoke("PaneliKapat", 2f);
+        Invoke("PaneliKapat", 8f);
     }
 
     void PaneliKapat()
