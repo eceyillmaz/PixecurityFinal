@@ -13,7 +13,7 @@ public class enemy : MonoBehaviour
 
     [Header("Görünme Ayarları")]
     public float gorunmeMesafesi = 5f; 
-    private bool gorunduMu = false; 
+    private bool gorunduMu = false; // Boşluk hatası düzeltildi!
     private SpriteRenderer sprite;
     private Collider2D col;
 
