@@ -6,16 +6,16 @@ public class NPC3_Diyalog : MonoBehaviour
     [Header("UI Elemanları")]
     public GameObject diyalogPaneli; 
     public Text diyalogMetni;       
-    public Button paylasButonu;    // Yanlış Seçenek
-    public Button reddetButonu;    // Doğru Seçenek
+    public Button paylasButonu;    
+    public Button reddetButonu;    
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi;    
-    public AudioClip dogruSesi;     
-    public AudioClip yanlisSesi;     
+    public AudioSource sesKaynagi;    // Hoparlör bileşeni
+    public AudioClip dogruSesi;      // Doğru cevap tık sesi
+    public AudioClip yanlisSesi;     // Yanlış cevap sesi 
 
     private bool etkilesimTamamlandi = false;
 
@@ -44,32 +44,33 @@ public class NPC3_Diyalog : MonoBehaviour
 
     void YanlisCevap()
     {
-        //ses
+        // ses kısmı 
         if (sesKaynagi != null && yanlisSesi != null) {
             sesKaynagi.PlayOneShot(yanlisSesi);
         }
 
         alicanScripti.CanAzalt(); // Kalbi karartır
         diyalogMetni.text = "EYVAH! Şifreni paylaştığında hesabın başkalarının eline geçebilir ve tüm emeğini kaybedebilirsin. Unutma: Şifre kişiye özeldir, kimseyle paylaşılmaz! Bir canın gitti.";
-        Invoke("PaneliKapat", 3f);
+        Invoke("PaneliKapat", 9f);
     }
 
     void DogruCevap()
     {
         etkilesimTamamlandi = true;
 
-      
+        // ses kısmı
         if (sesKaynagi != null && dogruSesi != null) {
             sesKaynagi.PlayOneShot(dogruSesi);
         }
 
         diyalogMetni.text = "HARİKA! Gerçek oyun yöneticileri veya tanımadığın oyuncular senden asla şifreni istemez. Şifreni paylaşmamak, dijital kaleni korumanın ilk kuralıdır! +25 Puan.";
         
+        // puan ekleme
         if (PuanSistemi.instance != null) {
             PuanSistemi.instance.PuanArttir(25); 
         }
         
-        Invoke("PaneliKapat", 2f);
+        Invoke("PaneliKapat", 8f);
     }
 
     void PaneliKapat()
