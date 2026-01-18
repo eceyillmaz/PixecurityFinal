@@ -29,16 +29,17 @@ public class FriendDiyalog : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Alican yanına gelirse
+        // Alican (Player) yanına gelirse
         if (other.CompareTag("Player") && !etkilesimTamamlandi)
         {
             if (alicanScripti != null) alicanScripti.hareketEdebilir = false; 
             
             diyalogPaneli.SetActive(true);
             
-            diyalogMetni.text = "DİKKAT ALİCAN!\n\nBir virüs sisteme sızdı ve seni kovalamaya başlayacak! " +
-                                "Haritadaki gizli dosyaları toplamalı ve virüse yakalanmadan çıkışa ulaşmalısın. " +
-                                "Güvenli bölge seni bekliyor!";
+            diyalogMetni.text = "DİKKAT ALİCAN!\n\nSistemde yabancı bir virüs tespit edildi!" +
+                    "Bazı zararlı yazılımlar bilgilerimize ulaşmak için bizi takip edebilir.\n\n" +
+                    "Şimdi bilgilerini koruma zamanı! Virüse yakalanmadan haritadaki dosyaları topla " +
+                    "ve onları güvenli çıkış kapısına ulaştır. Verilerin sana emanet!";
             
             etkilesimTamamlandi = true; 
         }
@@ -50,7 +51,7 @@ public class FriendDiyalog : MonoBehaviour
         
         if (alicanScripti != null) alicanScripti.hareketEdebilir = true;
 
-        // virüsü kaybetme
+        // viürüsü kaybet
         if (virusObjesi != null)
         {
             virusObjesi.SetActive(true); // Kapalı olan virüsü açar
