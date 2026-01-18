@@ -6,16 +6,16 @@ public class OltalamaSorusu : MonoBehaviour
     [Header("UI Elemanları")]
     public GameObject diyalogPaneli; 
     public Text diyalogMetni;       
-    public Button tıklaButonu;      
-    public Button reddetButonu;     
+    public Button tıklaButonu;     
+    public Button reddetButonu;    
 
     [Header("Referanslar")]
     public ALİCAN alicanScripti;    
 
     [Header("Ses Ayarları")]
-    public AudioSource sesKaynagi;  // Hoparlör bileşeni
-    public AudioClip dogruSesi;     // Başarı tıkı
-    public AudioClip yanlisSesi;    // Hata/Can gitme sesi
+    public AudioSource sesKaynagi;  
+    public AudioClip dogruSesi;     
+    public AudioClip yanlisSesi;    
 
     private bool etkilesimTamamlandi = false;
 
@@ -36,28 +36,25 @@ public class OltalamaSorusu : MonoBehaviour
            
             tıklaButonu.onClick.RemoveAllListeners();
             tıklaButonu.onClick.AddListener(DogruCevap);
-
-         
+          
             reddetButonu.onClick.RemoveAllListeners();
             reddetButonu.onClick.AddListener(YanlisCevap);
 
-        
             diyalogMetni.text = "Sistem Güvenlik Güncellemesi Mevcut! Güvende kalmak için hemen yüklemek ister misin?";
         }
     }
 
     void YanlisCevap()
     {
-   
         if (sesKaynagi != null && yanlisSesi != null) {
-            sesKaynagi.PlayOneShot(yanlisSesi); // Hata sesi
+            sesKaynagi.PlayOneShot(yanlisSesi); 
         }
 
         if(alicanScripti != null) alicanScripti.CanAzalt(); // Kalp kararır
         
-        diyalogMetni.text = "EYVAH! Güncellemeyi reddettiğin için sistemin savunmasız kaldı ve virüs bulaştı! Bir canın gitti. ipucu:İPUCU: Yazılım güncellemeleri, sistemdeki güvenlik açıklarını kapatan yamalar içerir. " +
+        diyalogMetni.text = "EYVAH! Güncellemeyi reddettiğin için sistemin savunmasız kaldı ve virüs bulaştı! Bir canın gitti. İPUCU: Yazılım güncellemeleri, sistemdeki güvenlik açıklarını kapatan yamalar içerir. " +
                            "Bunları reddetmek, kapıyı hırsızlara açık bırakmak gibidir!";
-        Invoke("PaneliKapat", 3f);
+        Invoke("PaneliKapat", 12f);
     }
 
     void DogruCevap()
@@ -65,7 +62,7 @@ public class OltalamaSorusu : MonoBehaviour
         etkilesimTamamlandi = true;
 
         if (sesKaynagi != null && dogruSesi != null) {
-            sesKaynagi.PlayOneShot(dogruSesi); // Başarı sesi
+            sesKaynagi.PlayOneShot(dogruSesi); 
         }
 
         diyalogMetni.text = "HARİKA! Sistemini güncel tutarak siber saldırganlara karşı büyük bir zafer kazandın!";
